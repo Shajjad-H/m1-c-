@@ -1,0 +1,3 @@
+/Users/shajjad/Desktop/Programming/univ-2019-2020/c++/github.com/libStrings/CMakeFiles/rebuild_cache.dir
+/Users/shajjad/Desktop/Programming/univ-2019-2020/c++/github.com/libStrings/CMakeFiles/edit_cache.dir
+/Users/shajjad/Desktop/Programming/univ-2019-2020/c++/github.com/libStrings/CMakeFiles/test.dir

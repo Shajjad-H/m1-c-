@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/shajjad/Desktop/Programming/univ-2019-2020/c++/github.com/libStrings/src/cpp/String.cpp
+String.hpp
+/Users/shajjad/Desktop/Programming/univ-2019-2020/c++/github.com/libStrings/src/cpp/String.hpp
+stdexcept
+-
+

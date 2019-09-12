@@ -1,5 +1,5 @@
 #include <iostream>
-
+// g++ -gdb -std=c++11
 class LaClasse {
    public:
     // Construction, conversion, affectation et destruction
