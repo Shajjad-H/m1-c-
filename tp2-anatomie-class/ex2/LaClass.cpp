@@ -158,8 +158,17 @@ void testLaClasseSpecialisee() {
     
 }
 
-int main() {
-    testLaClass();
+void testOptiOuNon() {
+    //LaClasse c1;
+    // LaClasse c2 = LaClasse();
+    // LaClasse c2;
+    // LaClasse cc2 = c2;
+    LaClasse cv3 = LaClasse(5);
+    LaClasse cv4 = (LaClasse)5;
 
+}
+
+int main() {
+    testOptiOuNon();
     return 0;
 }

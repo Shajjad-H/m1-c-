@@ -1,6 +1,7 @@
 #include "String.hpp"
 
-#include <stdexcept> 
+#include <stdexcept>
+#include <ostream>
 
 using namespace std;
 
@@ -19,17 +20,15 @@ String::String(const char & chr) {
 
 
 String::String(const char * chrs) {
-
+    this->str = NULL;
     this->replace(chrs);
 
 }
 
-String::String(const String & s): length(s.length), reservedLength(s.reservedLength) {
 
-    this->str = new char[this->reservedLength];
-    for(size_s i = 0; i < this->length; i++) {
-        str[i] = s.at(i);
-    }
+String::String(const String & s) {
+    this->str = NULL;
+    this->replace(s);
 }
 
 
@@ -41,8 +40,21 @@ char String::at(size_s index) const {
     throw invalid_argument( "out of range index in function at(size_s index);"  );
 }
 
-void String::replace(const char * chrs) {
+void String::replace(const String & s) {
     
+    this->erase();
+    this->length = s.length;
+    this->reservedLength = s.reservedLength;
+
+    this->str = new char[this->reservedLength];
+    
+    for(size_s i = 0; i < this->length; i++) {
+        this->str[i] = s.at(i);
+    }
+}
+
+void String::replace(const char * chrs) {
+    this->erase();
     this->length = this->strLen(chrs);
     this->reservedLength = this->length;
 
@@ -59,6 +71,20 @@ void String::replace(const char * chrs) {
 
 size_s String::size() const {
     return this->length;
+}
+
+ostream& operator<<(ostream& os, const String& s) {
+    os<<s.str;
+    return os;
+}
+
+
+char & String::operator[](size_s index) const {
+    
+    if( index < this->length)
+        return this->str[index];
+
+    throw invalid_argument( "out of range index in function [size_s index]"  );
 }
 
 
@@ -96,11 +122,11 @@ char * String::c_str() const {
 
 
 const String & String::operator=(const String & s) {
-    this->erase();
-    
-
+    this->replace(s);
+    return *this;
 }
 
 const String & String::operator=(const char * chrs) {
-
+    this->replace(chrs);
+    return *this;
 }

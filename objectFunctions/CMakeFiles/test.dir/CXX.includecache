@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/shajjad/Desktop/Programming/univ-2019-2020/c++/github.com/objectFunctions/src/tests/testGenMult.cpp
+iostream
+-
+GenMult.hpp
+/Users/shajjad/Desktop/Programming/univ-2019-2020/c++/github.com/objectFunctions/src/tests/GenMult.hpp
+

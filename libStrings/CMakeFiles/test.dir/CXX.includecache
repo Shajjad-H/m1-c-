@@ -6,9 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/Users/shajjad/Desktop/Programming/univ-2019-2020/c++/github.com/libStrings/src/cpp/String.cpp
+/Users/shajjad/Desktop/Programming/univ-2019-2020/c++/github.com/libStrings/src/tests/stringTest.cpp
 String.hpp
-/Users/shajjad/Desktop/Programming/univ-2019-2020/c++/github.com/libStrings/src/cpp/String.hpp
-stdexcept
+/Users/shajjad/Desktop/Programming/univ-2019-2020/c++/github.com/libStrings/src/tests/String.hpp
+cassert
+-
+iostream
+-
+string
 -
 
