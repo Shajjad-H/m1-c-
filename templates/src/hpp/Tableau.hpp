@@ -1,5 +1,7 @@
 #pragma once
 
+#include <exception>
+
 typedef unsigned int size_tab;
 
 template<typename T>
@@ -19,9 +21,11 @@ class Tableau {
         void push(const T &);
         T & operator[](size_tab index);
         const Tableau<T> & operator=(const Tableau<T> &);
-        
+
 
 };
+
+
 
 template<typename T>
 Tableau<T>::Tableau<T>(const Tableau<T> & tab) {
@@ -32,6 +36,40 @@ Tableau<T>::Tableau<T>(const Tableau<T> & tab) {
     this->copie( tab.data, this->data, this->len );
 
 }
+
+template<typename T>
+T & Tableau<T>::operator[](size_tab index) {
+
+    if(index < this->len) {
+
+        return this->data[index];
+    }
+
+    throw exception("depacement de la taille");
+}
+
+template<typename T>
+const Tableau<T> & Tableau<T>::operator=(const Tableau<T> & tab) {
+
+    if(this->reservedLen >= tab.reservedLen) {
+
+        this->len = tab.len;
+        this->copie(this->data, tab.data, this->len);
+        return *this;
+
+    }
+
+    this->len = tab.len;
+    this->reservedLen = tab.reservedLen;
+    delete[] this->data;
+    this->data = new T[this->reservedLen];
+
+    this->copie(this->data, tab.data, this->len);
+
+    return *this;
+
+}
+
 
 template<typename T>
 Tableau<T>::~Tableau<T>() {
@@ -68,6 +106,13 @@ void Tableau<T>::push(const T & e) {
 
     }
 }
+
+template<typename T>
+size_tab Tableau<T>::size() const {
+
+    return this->len;
+}
+
 
 template<typename T>
 void Tableau<T>::copie(const T * source, T * dest,  size_tab size) {
