@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION "2.8")
 
-project("Templates")
+project("expression")
 
 set(CMAKE_CXX_FLAGS "-std=c++11 -Wall -g -Isrc/hpp") # compiler version and compiler flags.
 
@@ -14,5 +14,4 @@ file(GLOB src
 
 message(src)
 
-#add_executable(test ${src} src/tests/templateFunction.cpp)
-add_executable(test ${src} src/tests/testTemplate.cpp)
+add_executable(test ${src} src/tests/testExpression.cpp)

@@ -2,33 +2,51 @@
 
 #include <exception>
 
+#include "Iterator.hpp"
+
 typedef unsigned int size_tab;
+
 
 template<typename T>
 class Tableau {
 
+    typedef Iterator<T> iterator;
+    
     protected:
         T  * data;
         size_tab len;
         size_tab reservedLen;
         void copie(const T * source, T * dest, size_tab size);
     public:
-        Tableau<T>();
-        Tableau<T>(const Tableau<T> &);
-        Tableau<T>(const T * tab, size_tab size);
-        ~Tableau<T>();
+        Tableau();
+        Tableau(const Tableau<T> &);
+        Tableau(const T * tab, size_tab size);
+        ~Tableau();
         size_tab size() const;
         void push(const T &);
         T & operator[](size_tab index);
         const Tableau<T> & operator=(const Tableau<T> &);
+        Tableau::iterator begin();
+        Tableau::iterator end();
 
 
 };
 
+template<typename T>
+typename Tableau<T>::iterator Tableau<T>::begin() {
+    return iterator(*this, 0);
+}
+
+template<typename T>
+typename Tableau<T>::iterator Tableau<T>::end() {
+
+    return iterator(*this, this->len);
+
+}
 
 
 template<typename T>
-Tableau<T>::Tableau<T>(const Tableau<T> & tab) {
+Tableau<T>::Tableau(const Tableau<T> & tab) {
 
     this->len = tab.len;
     this->reservedLen = tab.reservedLen;
@@ -45,15 +63,16 @@ T & Tableau<T>::operator[](size_tab index) {
         return this->data[index];
     }
 
-    throw exception("depacement de la taille");
+    throw "depacement de la taille";
 }
 
 template<typename T>
 const Tableau<T> & Tableau<T>::operator=(const Tableau<T> & tab) {
 
-    if(this->reservedLen >= tab.reservedLen) {
+    if( tab.reservedLen < this->reservedLen) {
 
         this->len = tab.len;
+        this->reservedLen = tab.reservedLen;
         this->copie(this->data, tab.data, this->len);
         return *this;
 
@@ -61,7 +80,8 @@ const Tableau<T> & Tableau<T>::operator=(const Tableau<T> & tab) {
 
     this->len = tab.len;
     this->reservedLen = tab.reservedLen;
-    delete[] this->data;
+    if (this->data)
+        delete[] this->data;
     this->data = new T[this->reservedLen];
 
     this->copie(this->data, tab.data, this->len);
@@ -79,7 +99,7 @@ Tableau<T>::~Tableau<T>() {
 }
 
 template<typename T>
-Tableau<T>::Tableau<T>() {
+Tableau<T>::Tableau() {
     this->len = 0;
     this->reservedLen = 2;
     this->data = new T[this->reservedLen];

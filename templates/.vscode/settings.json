@@ -1,0 +1,16 @@
+{
+    "files.associations": {
+        "iterator": "cpp",
+        "__locale": "cpp",
+        "bitset": "cpp",
+        "ios": "cpp",
+        "istream": "cpp",
+        "locale": "cpp",
+        "memory": "cpp",
+        "ostream": "cpp",
+        "streambuf": "cpp",
+        "string": "cpp",
+        "exception": "cpp",
+        "__config": "cpp"
+    }
+}
